@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leer en Casa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<style>
+/* =============================================
+   RESET & BASE
+============================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; overflow-x: hidden; width: 100%; }
+
+/* Contenedor inteligente */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* top: -100; */
+}
+
+/* =============================================
+   SECCIÓN 0: NAV
+============================================= */
+.nav-section {
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 24.1px rgba(0,0,0,0.03);
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-inner {
+  display: flex; flex-direction: row;
+  justify-content: space-between; align-items: center;
+  padding: 15px 150px; height: 68px;
+  max-width: 1280px; margin: 0 auto; width: 100%;
+}
+.nav-logo img { width: 163px; height: 38px; object-fit: contain; display: block; }
+.nav-links {
+  display: block;display: flex; flex-direction: row; align-items: center;
+  gap: 38px; list-style: none;
+}
+.nav-links a {
+  font-family: 'Nunito'; font-weight: 900; font-size: 14px; line-height: 19px;
+  color: #695EB3; text-decoration: none; white-space: nowrap;
+}
+
+.nav-links a:hover{color: #E7576E;}
+.hamburger { display: none; flex-direction: column; gap: 5.5px; cursor: pointer; padding: 4px; }
+.hamburger span { display: block; width: 24px; height: 3.2px; background: #A2A2A2; border-radius: 2px; }
+
+/* =============================================
+   SECCIÓN 1: HEADER HERO
+============================================= */
+.section-header { width: 100%; position: relative; overflow: hidden; }
+
+/* DESKTOP */
+.header-desktop { width: 100%; height: 760px; position: relative; display: block; }
+.ciudad-bg {
+  position: absolute; top: 0; left: 0; right: 0; height: 380px;
+  display: flex; justify-content: center; align-items: flex-end;
+  background: #f5f5f7;
+}
+.ciudad-bg .object-img {
+  width: 100%; max-width: 1043px; height: auto; max-height: 337px;
+  object-fit: contain; object-position: bottom;
+}
+.ciudad-suelo {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 380px; background: #695EB3;
+  background-image:url(https://i.ibb.co/QvFq1KcH/background-Points2.png);
+  background-size: 100%;
+}
+/* casas_info: position absolute, top:0 */
+.casas-info {
+  position: absolute; left: 0; right: 0; top: 0; height: 380px;
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+  z-index: 2; pointer-events: none; 
+      max-width: 1440px;
+    margin: auto;
+}
+.info-row {
+  display: flex; flex-direction: row; justify-content: center; align-items: center;
+  gap: 200px; width: 100%;
+}
+.frame-46 { display: flex; flex-direction: column; align-items: flex-end; gap: 40px; width: 257px; }
+.frame-47 { display: flex; flex-direction: column; align-items: flex-start; gap: 40px; width: 247px; }
+.txt-purple { font-family: 'Nunito'; font-weight: 900; font-size: 16px; line-height: 22px; color: #695EB3; }
+.txt-red { font-family: 'Nunito'; font-weight: 900; font-size: 16px; line-height: 22px; color: #E7576E; }
+.frame-46 .txt-purple { text-align: right; width: 186px; }
+.frame-46 .txt-red { text-align: right; width: 257px; }
+.frame-47 .txt-red { width: 226px; }
+.frame-47 .txt-purple { width: 247px; }
+.casas-row {
+  display: flex; flex-direction: row; justify-content: space-between;
+  align-items: flex-end; padding: 0 150px; width: 100%; height: 125px;
+}
+.casas-row img { width: 230px; height: 125px; object-fit: contain; }
+/* Girl + buttons overlay */
+.cont-background2 {
+  position: absolute; top: 0; left: 0; right: 0; height: 760px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  align-items: center; padding: 70px 0 50px; z-index: 3; pointer-events: none;
+}
+.cont-background2 > * { pointer-events: auto; }
+.girl-img {
+  width: 646px; max-width: 90vw; height: auto;
+  max-height: 500px; object-fit: contain; display: block;
+}
+.cont-botones { display: flex; flex-direction: row; align-items: center; gap: 15px;}
+.cont-botones a, .cont-botones-mobile a{text-decoration: none;}
+.btn-adquirir {
+  display: flex; justify-content: center; align-items: center;
+  padding: 15px; gap: 10px; width: 300px; height: 57px;
+  background: #E7576E; border-radius: 12px;
+  font-family: 'Nunito'; font-weight: 900; font-size: 14px;
+  color: #FFFFFF; cursor: pointer; border: none; white-space: nowrap;
+  transition: transform 0.3s ease-out;
+}
+
+.btn-adquirir:hover{ transform: scale(1.05); transition: transform 0.3s ease;
+
+}
+
+.btn-whatsapp {
+  display: flex; flex-direction: row; justify-content: center; align-items: center;
+  padding: 15px 20px; gap: 10px; width: 251px; height: 57px;
+  background: #25D366; border-radius: 12px;
+  font-family: 'Nunito'; font-weight: 900; font-size: 14px;
+  color: #FFFFFF; cursor: pointer; border: none; white-space: nowrap;
+  transition: transform 0.3s ease-out;
+}
+
+.btn-whatsapp:hover{ transform: scale(1.05); transition: transform 0.3s ease;
+}
+
+.wa-icon { width: 24px; height: 24px; fill: white; flex-shrink: 0; }
+
+/* MOBILE HEADER */
+.header-mobile {
+  display: none; width: 100%; background: #695EB3;
+  flex-direction: column; align-items: center; padding: 0 0 30px; gap: 0;
+}
+.header-mobile-sky {
+  width: 100%; background: #f5f5f7;
+  display: flex; justify-content: center; align-items: flex-end;
+  height: 180px; overflow: hidden;
+}
+.header-mobile-sky img { width: 100%; object-fit: contain; object-position: bottom; }
+.header-mobile-content {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 30px 30px 0; gap: 26px; width: 100%;
+}
+.casas-info-mobile {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 15px; width: 100%; max-width: 270px;
+}
+.casas-info-mobile .txt-purple {
+  font-family: 'Nunito'; font-weight: 900; font-size: 17px; line-height: 23px;
+  text-align: center; color: #FFFFFF;
+}
+.casas-info-mobile .txt-red {
+  font-family: 'Nunito'; font-weight: 900; font-size: 17px; line-height: 23px;
+  text-align: center; color: #FAACB9;
+}
+.girl-img-mobile { width: 100%; max-width: 330px; height: auto; object-fit: contain; }
+.cont-botones-mobile {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 10px; width: 100%; max-width: 270px;
+}
+.btn-adquirir-m {
+  display: flex; justify-content: center; align-items: center;
+  padding: 15px; width: 100%; height: 60px;
+  background: #E7576E; border-radius: 12px;
+  font-family: 'Nunito'; font-weight: 900; font-size: 14px;
+  color: #FFFFFF; cursor: pointer; border: none; text-align: center;
+}
+.btn-whatsapp-m {
+  display: flex; flex-direction: row; justify-content: center; align-items: center;
+  padding: 15px 20px; gap: 10px; width: 100%; height: 60px;
+  background: #25D366; border-radius: 12px;
+  font-family: 'Nunito'; font-weight: 900; font-size: 14px;
+  color: #FFFFFF; cursor: pointer; border: none;
+}
+
+/* =============================================
+   SECCIÓN 2: ENGAGEMENT
+============================================= */
+.section-engagement {position: relative; width: 100%; background: #695EB3;    
+  background-image:url(https://i.ibb.co/QvFq1KcH/background-Points2.png);
+  background-size: 100%;
+}
+.engagement-img{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.engagement-inner {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 0 150px 150px; max-width: 1280px; margin: 0 auto;
+}
+.cont-casa1 {
+  display: flex; flex-direction: column; align-items: flex-end;
+  padding: 0 70px; gap: 10px; width: 100%;
+}
+.casa1-img { width: 279px; height: 149px; object-fit: contain; }
+.cont-book-info {
+  display: flex; flex-direction: row; justify-content: space-between;
+  align-items: center; padding: 25px 40px; gap: 10px; width: 100%;
+  background: #7C70CF; border: 2px dashed #9E94E1; border-radius: 28px;
+}
+.libro1-img { width: 350px; height: 463px; object-fit: contain; flex-shrink: 0; }
+.cont-info1 {
+  display: flex; flex-direction: column; justify-content: center;
+  align-items: flex-start; gap: 30px; flex: 1; min-width: 0;
+}
+.cont-info1 h2 {
+  font-family: 'Nunito'; font-weight: 900; font-size: 32px; line-height: 44px; color: #FFFFFF;
+}
+.info-grid { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; width: 100%; }
+.info-col { display: flex; flex-direction: column; align-items: flex-start; gap: 25px; flex: 1; }
+.info-line { display: flex; flex-direction: row; align-items: flex-start; gap: 10px; }
+.check-icon {
+  width: 22px; height: 22px; background: #FFFFFF; border-radius: 50%;
+  flex-shrink: 0; margin-top: 1px;
+  display: flex; align-items: center; justify-content: center;
+}
+.check-icon::after { content: '✓'; color: #695EB3; font-size: 12px; font-weight: 900; }
+.info-line p { font-family: 'Nunito'; font-weight: 900; font-size: 16px; line-height: 22px; color: #FFFFFF; }
+
+/* =============================================
+   SECCIÓN 3: VIDEO
+============================================= */
+.section-video {position: relative; width: 100%; background: linear-gradient(180deg, #695EB3 0%, #E7576E 100%); }
+.video-inner {
+  position:relative; display: flex; flex-direction: row; justify-content: center; align-items: center;
+  padding: 150px 150px 150px; gap: 20px; max-width: 1280px; margin: 0 auto; min-height: 734px;
+}
+.kid-reading-img {
+  width: 313px; flex-shrink: 0; height: auto; max-height: 584px;
+  object-fit: contain; align-self: flex-end;
+}
+.contenedor-video {
+  position: relative; display: flex; flex-direction: column; align-items: flex-start;
+  padding: 30px; gap: 17px; width: 647px; flex-shrink: 0;
+  background: rgba(242,104,126,0.25);
+  border: 2px dashed #FAACB9; border-radius: 16px;
+}
+.contenedor-video h2 {
+  font-family: 'Nunito'; font-weight: 900; font-size: 28px; line-height: 38px;
+  color: #FFFFFF; width: 100%;
+}
+.video-top-nube{
+  top: -150px;
+  position: absolute;
+  width: 231px;
+  height: auto;
+}
+
+.video-top-nube2{
+  top: 0;
+  position: absolute;
+  width: 300px;
+  height: auto;
+  left: 0;
+}
+
+.video-box { width: 100%; height: 349px; background: #000; border-radius: 12px; overflow: hidden; }
+.video-box iframe { width: 100%; height: 100%; border: none; }
+.video-subtitle {
+  font-family: 'Nunito'; font-weight: 900; font-size: 21px; line-height: 29px;
+  color: #FFFFFF; width: 100%;
+}
+.frame-25 { display: flex; flex-direction: row; align-items: center; gap: 27px; flex-wrap: wrap; }
+.frame-24 { display: flex; flex-direction: row; align-items: center; gap: 15px; }
+.avatar { width: 57px; height: 57px; background: #D9D9D9; border-radius: 50%; flex-shrink: 0; }
+.channel-name { font-family: 'Nunito'; font-weight: 900; font-size: 21px; line-height: 29px; color: #FFFFFF; }
+.channel-subs { font-family: 'Nunito'; font-weight: 600; font-size: 14px; line-height: 19px; color: #FFFFFF; }
+.frame-22 { display: flex; flex-direction: row; align-items: center; gap: 15px; }
+.frame-22 a{text-decoration: none;}
+.btn-outline {
+  display: flex; justify-content: center; align-items: center;
+  padding: 14px 29px; border: 1px solid #FFFFFF; border-radius: 68px;
+  font-family: 'Nunito'; font-weight: 900; font-size: 14px;
+  color: #FFFFFF; background: transparent; cursor: pointer; white-space: nowrap;
+}
+
+.btn-outline:hover{
+  color: #E7576E;
+  background-color: white;
+   transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* =============================================
+   SECCIÓN 4: PACKS
+============================================= */
+.section-packs {position: relative; width: 100%; background: #E7576E; }
+.packs-nube{position: absolute; width: 377px; height: auto; top: -100px; right: 0px;}
+.packs-nube2{position: absolute; width: 547px; height: auto; top: -80px; left: 0px;}
+.packs-inner {
+  position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 60px 150px 150px; gap: 39px; max-width: 1280px; margin: 0 auto; z-index: 1;
+}
+.packs-inner > h2 {
+  font-family: 'Nunito'; font-weight: 900; font-size: 32px; line-height: 44px;
+  text-align: center; color: #FFFFFF; width: 100%;
+}
+.packs-grid { display: flex; flex-direction: column; gap: 25px; width: 100%; }
+.packs-row { display: flex; flex-direction: row; gap: 25px; width: 100%; }
+.pack-card {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 39px 20px; gap: 14px; flex: 1;
+  background: #F2687E; border: 2px dashed #FAACB9; border-radius: 14px; min-height: 232px;
+  transition: transform 0.3s ease-out;
+}
+
+.pack-card:hover{cursor: pointer; transform: scale(1.04); transition: transform 0.3s ease;
+}
+
+.pack-icon {
+  width: 60px; height: 60px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; flex-shrink: 0;
+}
+.pack-icon img { width: 100%; height: 100%; object-fit: contain; }
+.pack-title {
+  font-family: 'Nunito'; font-weight: 900; font-size: 16px; line-height: 22px;
+  text-align: center; color: #FFFFFF;
+}
+.pack-desc {
+  font-family: 'Nunito'; font-weight: 400; font-size: 12px; line-height: 16px;
+  text-align: center; color: #FFFFFF;
+}
+.pack-city{
+  position: absolute;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+}
+
+/* =============================================
+   SECCIÓN 5: LIBRO NACHO
+============================================= */
+.section-nacho { width: 100%; background: #695EB3; position: relative; overflow: hidden; 
+  background-image:url(https://i.ibb.co/QvFq1KcH/background-Points2.png);
+  background-size: 100%;}
+.nacho-inner {
+  display: flex; flex-direction: row; justify-content: center; align-items: center;
+  padding: 0 150px; gap: 21px; min-height: 436px;
+  max-width: 1280px; margin: 0 auto; position: relative; z-index: 1;
+}
+.nacho-book { width: 400px; height: 436px; object-fit: contain; flex-shrink: 0; }
+.nacho-text { display: flex; flex-direction: column; gap: 18px; flex: 1; }
+.nacho-text h2 {
+  font-family: 'Nunito'; font-weight: 900; font-size: 32px; line-height: 44px; color: #FFFFFF;
+}
+.nacho-text p {
+  font-family: 'Nunito'; font-weight: 900; font-size: 16px; line-height: 22px; color: #FFFFFF;
+}
+.arbusto-left { position: absolute; left: 0; bottom: 0; height: 83px; width: auto; z-index: 0; }
+.arbusto-right { position: absolute; right: 0; bottom: 0; height: 120px; width: auto; z-index: 0; transform: scaleX(-1); }
+
+/* =============================================
+   SECCIÓN 6: OFERTA
+============================================= */
+.section-oferta { width: 100%; background: #FFFFFF; overflow: hidden; }
+.oferta-inner {
+  display: flex; flex-direction: row; justify-content: space-between;
+  align-items: flex-end; min-height: 819px; max-width: 1280px; margin: 0 auto;
+}
+.libro-mockup { width: 630px; height: 819px; object-fit: cover; flex-shrink: 0; }
+.cont-oferta-right {
+  display: flex; flex-direction: row; justify-content: center; align-items: center;
+  padding: 10px; flex: 1; min-height: 819px;
+}
+.oferta-card {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 31px 39px; gap: 22px; width: 416px;
+  background: #FFFFFF; border: 2px dashed #DADADA;
+  box-shadow: 0px 14px 99px rgba(0,0,0,0.12); border-radius: 22px;
+}
+.oferta-precio { display: flex; flex-direction: column; align-items: center; gap: 5px; width: 100%; }
+.precio-tachado {
+  font-family: 'Nunito'; font-weight: 900; font-size: 21.76px; line-height: 30px;
+  text-align: center; color: #695EB3; text-decoration: line-through; opacity: 0.6;
+}
+.precio-actual {
+  font-family: 'Nunito'; font-weight: 900; font-size: 43.5px; line-height: 59px;
+  text-align: center; color: #695EB3;
+}
+.precio-label {
+  font-family: 'Nunito'; font-weight: 900; font-size: 21.76px; line-height: 30px;
+  text-align: center; color: #695EB3;
+}
+.oferta-desc { display: flex; flex-direction: column; width: 100%; }
+.oferta-item {
+  display: flex; justify-content: center; align-items: center; padding: 15.5px;
+  border-bottom: 0.78px dashed #E7576E;
+  font-family: 'Nunito'; font-weight: 400; font-size: 18.65px; line-height: 25px;
+  text-align: center; color: #E7576E;
+}
+.oferta-item:first-child { border-top: 0.78px dashed #E7576E; }
+.btn-solicitar {
+  display: flex; justify-content: center; align-items: center;
+  padding: 15.5px; width: 100%; background: #695EB3; border-radius: 11px; border: none;
+  font-family: 'Nunito'; font-weight: 900; font-size: 21.76px; line-height: 30px;
+  color: #FFFFFF; cursor: pointer;
+}
+
+/* =============================================
+   SECCIÓN 7: FOOTER
+============================================= */
+.section-footer { width: 100%; background: #695EB3; position: relative; overflow: hidden; }
+.footer-inner {
+  display: flex; flex-direction: row; justify-content: flex-start; align-items: center;
+  padding: 0 0 0 150px; min-height: 816px; max-width: 1280px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.cont-info-form {
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: 33px; width: 481px; padding: 80px 0;
+}
+.cont-form { display: flex; flex-direction: column; gap: 14px; width: 100%; }
+.cont-form h2 {
+  font-family: 'Nunito'; font-weight: 900; font-size: 32px; line-height: 44px; color: #FFFFFF;
+}
+.form-fields { display: flex; flex-direction: column; gap: 15px; width: 100%; }
+.form-input {
+  width: 100%; padding: 12px 20px; background: #FFFFFF; border-radius: 8px; border: none;
+  font-family: 'Nunito'; font-weight: 900; font-size: 14px;
+  color: rgba(105,94,179,0.5); outline: none;
+}
+.form-input::placeholder { color: rgba(105,94,179,0.4); }
+.form-textarea {
+  width: 100%; height: 134px; padding: 12px 20px; background: #FFFFFF;
+  border-radius: 8px; border: none; font-family: 'Nunito'; font-weight: 900; font-size: 14px;
+  color: rgba(105,94,179,0.5); outline: none; resize: none;
+}
+.form-textarea::placeholder { color: rgba(105,94,179,0.4); }
+.btn-enviar {
+  padding: 10px 20px; background: #FFFFFF; border-radius: 8px; border: none;
+  font-family: 'Nunito'; font-weight: 900; font-size: 14px;
+  color: #695EB3; cursor: pointer; width: 126px; height: 39px;
+}
+.forma-pago { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.forma-pago > p {
+  font-family: 'Nunito'; font-weight: 900; font-size: 19px; line-height: 26px; color: #FFFFFF;
+}
+.pagos { display: flex; flex-direction: row; gap: 10px; flex-wrap: wrap; }
+.pago-wa {
+  display: flex; justify-content: center; align-items: center;
+  padding: 10px 20px; gap: 10px; background: #25D366; border-radius: 14px; height: 61px;
+  font-family: 'Nunito'; font-weight: 900; font-size: 14px;
+  color: #FFFFFF; text-decoration: none; cursor: pointer; white-space: nowrap;
+}
+.pago-icon {
+  display: flex; justify-content: center; align-items: center;
+  background: #FFFFFF; border-radius: 14px; height: 61px;
+  min-width: 57px; padding: 8px 6px; text-align: center;
+  font-family: 'Nunito'; font-weight: 900; font-size: 10px; color: #172C70;
+  line-height: 1.2;
+}
+.maestra-img {
+  position: absolute; right: 0; bottom: 0;
+  width: 629px; height: 816px; object-fit: cover; object-position: top center; z-index: 0;
+}
+.arbol-footer { position: absolute; bottom: 0; height: 90px; width: auto; z-index: 2; }
+.arbol-footer-big { position: absolute; bottom: 0; height: 167px; width: auto; z-index: 2; }
+
+/* =============================================
+   MOBILE QUERIES
+============================================= */
+@media (max-width: 768px) {
+  .nav-inner { padding: 15px 30px; }
+  .nav-links { display: none; height: 100%;}
+  .hamburger { display: flex; }
+
+  /* Header */
+  .header-desktop { display: none; }
+  .header-mobile { display: flex; }
+  .header-mobile-sky{display: none;}
+  .casas-info-mobile p{
+    color: white!important;
+  }
+
+  /* Engagement */
+  .engagement-inner { padding: 30px; gap: 20px; }
+  .cont-casa1 { align-items: center; padding: 0; }
+  .cont-book-info { flex-direction: column; padding: 30px; gap: 30px; border-radius: 15px; }
+  .libro1-img { display: none; }
+  .cont-info1 h2 { font-size: 28px; line-height: 38px; }
+  .info-grid { flex-direction: column; gap: 20px; }
+  .engagement-img{display: none;}
+  .video-top-nube{top: -100px; right: 0; opacity: 0.5;}
+
+  /* Video */
+  .video-inner { flex-direction: column; padding: 30px; gap: 10px; min-height: auto; }
+  .kid-reading-img { display: none; }
+  .contenedor-video { width: 100%; }
+  .video-box { height: 185px; }
+  .frame-25 { flex-direction: column; gap: 15px; flex-direction:start!important; }
+  .packs-nube, .packs-nube2{display: none;}
+
+  /* Packs */
+  .packs-inner { padding: 30px; gap: 19px; }
+  .packs-row { flex-direction: column; gap: 25px; }
+  .pack-card { width: 100%; }
+
+  /* Nacho */
+  .nacho-inner { flex-direction: column; padding: 30px; gap: 18px; min-height: auto;}
+  .nacho-book { width: 320px; height: 314px; }
+  .nacho-text h2 { text-align: center; font-size: 28px; }
+  .nacho-text p { text-align: center; }
+  .arbusto-left, .arbusto-right { display: none; }
+
+  /* Oferta */
+  .oferta-inner { flex-direction: column; align-items: center; padding: 30px; min-height: auto; }
+  .libro-mockup { display: none; }
+  .cont-oferta-right { min-height: auto; padding: 0; width: 100%; }
+  .oferta-card { width: 100%; max-width: 330px; padding: 24px 30px; gap: 17px; }
+  .precio-actual { font-size: 34px; line-height: 47px; }
+  .precio-tachado, .precio-label { font-size: 17px; line-height: 23px; }
+  .oferta-item { font-size: 14.6px; }
+
+  /* Footer */
+  .footer-inner { flex-direction: column; padding: 30px; min-height: auto; align-items: center; }
+  .cont-info-form { width: 100%; max-width: 331px; padding: 0; gap: 25px; }
+  .cont-form h2 { text-align: center; font-size: 28px; }
+  .maestra-img { display: none; }
+  .arbol-footer, .arbol-footer-big { display: none; }
+  .pagos { flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .pago-wa { flex: 1; min-width: 120px; }
+}
+</style>
+</head>
+<body>
+
+<!-- SECCIÓN 0: NAV -->
+<nav class="nav-section">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="https://i.ibb.co/8gHV1pYF/Logo.png" alt="Leer en Casa">
+    </div>
+    <!-- <i id="hamburger" class="bi bi-list"></i> -->
+    <ul class="nav-links">
+      <li><a href="#section1">Tu Objetivo</a></li>
+      <li><a href="#section2">Nuestro Libro</a></li>
+      <li><a href="#section3">Oferta</a></li>
+      <li><a href="#section4">Contáctanos</a></li>
+    </ul>
+    
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- SECCIÓN 1: HEADER -->
+<section id="" class="section-header">
+
+  <!-- DESKTOP -->
+  <div class="header-desktop">
+    <div class="ciudad-bg">
+      <img src="https://i.ibb.co/kVv1gPkn/Object.png" alt="Ciudad" class="object-img">
+    </div>
+    <div class="ciudad-suelo"></div>
+
+    <!-- casas_info: position absolute, top:0 — OCULTO EN MÓVIL -->
+    <div class="casas-info">
+      <div class="info-row">
+        <div class="frame-46">
+          <p class="txt-purple">Te sientes frustrada por no ver progreso.</p>
+          <p class="txt-red">Eres maestra y buscas materiales efectivos para el aula.</p>
+        </div>
+        <div class="frame-47">
+          <p class="txt-red">Tienes un hijo entre 3-7 años y quieres ayudarlo</p>
+          <p class="txt-purple">Necesitas una solución práctica y lista para usar.</p>
+        </div>
+      </div>
+      <div class="casas-row">
+        <img src="https://i.ibb.co/Q3hx1v0C/casa-1.png" alt="Casa 1">
+        <img src="https://i.ibb.co/5fwxxr7/casa-2.png" alt="Casa 2">
+      </div>
+    </div>
+
+    <!-- Girl + botones -->
+    <div class="cont-background2">
+      <img class="girl-img" src="https://i.ibb.co/bgyN5GzB/Girl.png" alt="Niña leyendo">
+      <div class="cont-botones">
+        <a href="#section3"><button class="btn-adquirir">Adquirir Libro, Ejercicios y AudioLibro</button></a>
+        <a href="https://wa.me/message/FTOZP26MYJW7C1">
+          <button class="btn-whatsapp">
+            <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Escríbeme si tienes dudas
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÓVIL -->
+  <div class="header-mobile">
+    <div class="header-mobile-sky">
+      <img src="https://i.ibb.co/kVv1gPkn/Object.png" alt="Ciudad">
+    </div>
+    <div class="header-mobile-content">
+      <div class="casas-info-mobile">
+        <p class="txt-purple">Te sientes frustrada por no ver progreso.</p>
+        <p class="txt-red">Eres maestra y buscas materiales efectivos para el aula.</p>
+        <p class="txt-red">Tienes un hijo entre 3-7 años y quieres ayudarlo</p>
+        <p class="txt-purple">Necesitas una solución práctica y lista para usar.</p>
+      </div>
+      <img class="girl-img-mobile" src="https://i.ibb.co/bgyN5GzB/Girl.png" alt="Niña leyendo">
+      <div class="cont-botones-mobile">
+        <a href="#section3"><button class="btn-adquirir-m">Adquirir Libro, Ejercicios y AudioLibro</button></a>
+        <a href="https://wa.me/message/FTOZP26MYJW7C1">
+          <button class="btn-whatsapp-m">
+            <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Escríbeme si tienes dudas
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- SECCIÓN 2: ENGAGEMENT -->
+<section id="section1" class="section-engagement">
+  <img class="engagement-img" src="https://i.ibb.co/MyQZnVW7/Nuve-1.png" alt="">
+  <div class="engagement-inner">
+    <div class="cont-casa1">
+      <img class="casa1-img" src="https://i.ibb.co/5fwxxr7/casa-2.png" alt="Casa">
+    </div>
+    <div class="cont-book-info">
+      <!-- Libro1 — OCULTO EN MÓVIL -->
+      <img class="libro1-img" src="https://i.ibb.co/4RwrrL1f/Libro1.png" alt="Libro Leer en Casa">
+      <div class="cont-info1">
+        <h2>¿Qué lograrás con Leer en Casa?</h2>
+        <div class="info-grid">
+          <div class="info-col">
+            <div class="info-line">
+              <div class="check-icon"></div>
+              <p>Tu hijo aprenderá a leer sin miedo ni frustración</p>
+            </div>
+            <div class="info-line">
+              <div class="check-icon"></div>
+              <p>Leer se convertirá en un momento de conexión, no de tensión.</p>
+            </div>
+            <div class="info-line">
+              <div class="check-icon"></div>
+              <p>Funciona aunque no seas maestra.</p>
+            </div>
+          </div>
+          <div class="info-col">
+            <div class="info-line">
+              <div class="check-icon"></div>
+              <p>Ahorrarás horas de búsqueda, prueba y error.</p>
+            </div>
+            <div class="info-line">
+              <div class="check-icon"></div>
+              <p>Ideal para vacaciones, refuerzo o para adelantarse al colegio.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN 3: VIDEO -->
+<section id="section2" class="section-video">
+<img class="video-top-nube2" src="https://i.ibb.co/g2StXxW/Nuve-2.png" alt="">
+  <div class="video-inner">
+    <!-- Kid-reading — OCULTO EN MÓVIL -->
+    <img class="kid-reading-img" src="https://i.ibb.co/4ZKyngyb/Kid-reading.png" alt="Niño leyendo">
+    <div class="contenedor-video">
+      <img class="video-top-nube" src="https://i.ibb.co/MyQZnVW7/Nuve-1.png" alt="">
+      <h2>Previsualiza el libro</h2>
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/-HImJByJM2E" allowfullscreen title="Preview del libro"></iframe>
+      </div>
+      <p class="video-subtitle">El mejor libro para enseñar a tus hijos a leer</p>
+      <div class="frame-25">
+        <div class="frame-24">
+          <div class="avatar"></div>
+          <div>
+            <p class="channel-name">LeerLibroEnCasa</p>
+            <p class="channel-subs">1.5k subscriptores</p>
+          </div>
+        </div>
+        <div class="frame-22">
+           <a href="#section3"><button class="btn-outline">Ver Oferta</button></a>
+          <!-- <a href="#section3"><button class="btn-outline">Compartir</button></a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN 4: PACKS -->
+<section class="section-packs">
+  <img class="packs-nube" src="https://i.ibb.co/MyQZnVW7/Nuve-1.png" alt="">
+  <img class="packs-nube2" src="https://i.ibb.co/g2StXxW/Nuve-2.png" alt="">
+  <div class="packs-inner">
+    <h2>Todo lo que necesitas en un solo pack</h2>
+    <div class="packs-grid">
+      <div class="packs-row">
+        <div class="pack-card">
+          <div class="pack-icon" style=""><img src="https://i.ibb.co/WvDqYwtj/V1.png" alt="Dibujos"></div>
+          <p class="pack-title">10 Dibujos Temáticos Personalizados</p>
+          <p class="pack-desc">Refuerzan comprensión visual y se integran con el cuadernillo.</p>
+        </div>
+        <div class="pack-card">
+          <div class="pack-icon" style=""><img src="https://i.ibb.co/LdHT0FXp/V2.png" alt="Cuadernillo"></div>
+          <p class="pack-title">Cuadernillo de Lectura y Escritura (100 páginas)</p>
+          <p class="pack-desc">Trazos, vocales, sílabas, palabras y oraciones. (imprimible)</p>
+        </div>
+        <div class="pack-card">
+          <div class="pack-icon" style=""><img src="https://i.ibb.co/h1hPJR43/V3.png" alt="Audios"></div>
+          <!-- <div class="pack-icon" style="background:#C2C1D6;"><img src="https://i.ibb.co/WvDqYwtj/V1.png" alt="Audios"></div> -->
+          <p class="pack-title">80 Audios Educativos</p>
+          <p class="pack-desc">Para reforzar pronunciación, memoria auditiva y comprensión.</p>
+        </div>
+      </div>
+      <div class="packs-row">
+        <div class="pack-card">
+          <div class="pack-icon" style=""><img src="https://i.ibb.co/LTvgX95/V4.png" alt="Canciones"></div>
+          <p class="pack-title">12 Canciones Educativas y 10 cuentos infantiles</p>
+          <p class="pack-desc">Aprender con ritmo, sin esfuerzo para ganar fluidez</p>
+        </div>
+        <div class="pack-card">
+          <div class="pack-icon" style=""><img src="https://i.ibb.co/4Z2ycx7Z/V5.png" alt="Drive"></div>
+          <p class="pack-title">Acceso inmediato por Google Drive</p>
+          <p class="pack-desc">Puedes recibirlo por WhatsApp o correo. Tú eliges.</p>
+        </div>
+        <div class="pack-card">
+          <div class="pack-icon" style=""><img src="https://i.ibb.co/d4BkVgbB/V6.png" alt="Guía"></div>
+          <p class="pack-title">Guía Paso a Paso (para ti)</p>
+          <p class="pack-desc">Sin experiencia previa, solo necesitas seguir las instrucciones.</p>
+        </div>
+      </div>
+      <div class="packs-row">
+        <div class="pack-card" style="min-height:248px;">
+          <div class="pack-icon" style=""><img src="https://i.ibb.co/k23DNwbJ/V7.png" alt="Calendario"></div>
+          <p class="pack-title">Calendario</p>
+          <p class="pack-desc">Para saber qué avanzar, qué repetir, cuánto tiempo dedicar, organizar tareas, quehaceres del hogar y escuela.</p>
+        </div>
+        <div class="pack-card" style="min-height:248px;">
+          <div class="pack-icon" style=""><img src="https://i.ibb.co/RTBvmh92/V8.png" alt="Recursos"></div>
+          <p class="pack-title">Recursos y plantillas para imprimir</p>
+          <p class="pack-desc">Plantilla de horario escolar 2026, Diploma "Ya sé leer" y más de 30 tarjetas imprimibles.</p>
+        </div>
+        <div class="pack-card" style="min-height:248px;">
+          <div class="pack-icon" style=""><img src="https://i.ibb.co/MD5354wd/V9.png" alt="Más"></div>
+          <p class="pack-title">Y mucho más</p>
+          <p class="pack-desc">Juego tipo tablero lector y Rúbrica de avance lector</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="pack-city" src="https://i.ibb.co/SXdgDwWs/ciudad.png" alt="">
+</section>
+
+<!-- SECCIÓN 5: LIBRO NACHO -->
+<section class="section-nacho">
+  <!-- arbusto — OCULTO EN MÓVIL -->
+  <img class="arbusto-left" src="https://i.ibb.co/TBqT5bhr/arbusto.png" alt="">
+  <img class="arbusto-right" src="https://i.ibb.co/TBqT5bhr/arbusto.png" alt="">
+  <div class="nacho-inner">
+    <img class="nacho-book" src="https://i.ibb.co/MDPZszrG/Libro-nacho.png" alt="Libro Nacho">
+    <div class="nacho-text">
+      <h2>Basado en un método clásico modernizado para ti</h2>
+      <p>Leer en Casa se inspira en la progresión fonética tradicional del Libro Nacho, con el que generaciones aprendieron a leer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN 6: OFERTA -->
+<section id="section3" class="section-oferta">
+  <div class="oferta-inner">
+    <!-- Book-2 — OCULTO EN MÓVIL -->
+    <img class="libro-mockup" src="https://i.ibb.co/yFLZFDX0/Mockup-book-3.png" alt="Mockup libro">
+    <div class="cont-oferta-right">
+      <div class="oferta-card">
+        <div class="oferta-precio">
+          <p class="precio-tachado">RD$2,550</p>
+          <p class="precio-actual">RD$450</p>
+          <p class="precio-label">Oferta de lanzamiento por tiempo limitado.</p>
+        </div>
+        <div class="oferta-desc">
+          <div class="oferta-item">Incluye todos los bonos y actualizaciones futuras</div>
+          <div class="oferta-item">Sin suscripciones</div>
+          <div class="oferta-item">Pago único</div>
+        </div>
+        <button class="btn-solicitar">Solicitar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN 7: FOOTER -->
+<section id="section4" class="section-footer">
+  <img class="arbol-footer" style="left:0;" src="https://i.ibb.co/TBqT5bhr/arbusto.png" alt="">
+  <img class="arbol-footer-big" style="right:0;" src="https://i.ibb.co/TBqT5bhr/arbusto.png" alt="">
+  <!-- teacher — OCULTO EN MÓVIL -->
+  <img class="maestra-img" src="https://i.ibb.co/5XpbNHyR/teacher.png" alt="Maestra">
+
+  <div class="footer-inner">
+    <div class="cont-info-form">
+      <div class="cont-form">
+        <h2>Comunícate conmigo</h2>
+        <div class="form-fields">
+          <input class="form-input" type="text" placeholder="Nombre">
+          <input class="form-input" type="email" placeholder="Correo">
+          <textarea class="form-textarea" placeholder="Comentario"></textarea>
+          <button class="btn-enviar">Enviar</button>
+        </div>
+      </div>
+      <div class="forma-pago">
+        <p>Si eres de República Dominicana comunícate directamente</p>
+        <div class="pagos">
+          <a href="https://wa.me/message/FTOZP26MYJW7C1" class="pago-wa">
+            <svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp
+          </a>
+          <div class="pago-icon" style="color:#003087;"><img src="https://i.ibb.co/B5NP0hmQ/popular2.png" alt=""></div>
+          <div class="pago-icon" style="color:#254C74;"><img src="https://i.ibb.co/NG4mwH2/banreservas2.png" alt=""></div>
+          <div class="pago-icon" style="color:#004990;"><img src="https://i.ibb.co/B5NP0hmQ/popular2.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// const hamburger = document.getElementById('hamburger');
+// const navLinks = document.querySelector('.nav-links');
+// let menuOpen = false;
+// hamburger.addEventListener('click', () => {
+//   menuOpen = !menuOpen;
+//   navLinks.style.cssText = menuOpen
+//     ? 'display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:#fff;padding:20px 30px;gap:20px;box-shadow:0 8px 30px rgba(0,0,0,0.12);z-index:999;'
+//     : 'display:none;';
+// });
+// navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+//   menuOpen = false; navLinks.style.cssText = 'display:none;';
+// }));
+
+
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.querySelector('.nav-links');
+let menuOpen = false;
+
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
+hamburger.addEventListener('click', () => {
+  if (!isMobile()) return;
+  menuOpen = !menuOpen;
+  navLinks.style.cssText = menuOpen
+    ? 'display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:#fff;padding:20px 30px;gap:20px;box-shadow:0 8px 30px rgba(0,0,0,0.12);z-index:999;'
+    : 'display:none;';
+});
+
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    if (!isMobile()) return;
+    menuOpen = false;
+    navLinks.style.cssText = 'display:none;';
+  });
+});
+
+window.addEventListener('resize', () => {
+  if (!isMobile()) {
+    navLinks.style.cssText = '';
+    menuOpen = false;
+  }
+});
+
+
+</script>
+</body>
+</html>

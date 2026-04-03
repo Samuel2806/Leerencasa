@@ -497,10 +497,20 @@ html {
   .header-mobile { display: flex; }
   .header-mobile-sky{display: none;}
   .casas-info-mobile p{
-    color: white!important;
+    color: #695EB3!important;
   }
   .header-mobile-content{padding: 60px 30px 0 30px;}
+  .header-mobile{background-color: transparent; position: relative;}
 
+  .contenedor-city-house-mobile{display: grid; grid-template-rows:2fr 1fr;width: 100%; height: 100%; position: absolute; z-index: -1;}
+  .ciudad-casas-mobile{background-color: white; position: relative;height: 100%;}
+  .HEADER-BG-MOBILE{background-color: #695EB3; width: 100%;}
+
+  .ciudad-casas-mobile{display: flex;}
+  .ciudad-bg-mobile{position: absolute; bottom: 0px; opacity: 0.7;}
+  .ciudad-bg-mobile img{width: 100%;}
+  .casas-row-mobile{width: 100%; display: flex; justify-content: space-between; margin-top: auto; z-index: 1;}
+  .casas-row-mobile img{width: 185px; height: auto;}
   /* Panel lateral: empieza fuera a la derecha */
   .nav-links {
     position: fixed;
@@ -514,7 +524,7 @@ html {
     align-items: flex-start;
     gap: 0;
     padding: 10px 0;
-    box-shadow: -4px 0 30px rgba(0,0,0,0.12);
+    /* box-shadow: -4px 0 30px rgba(0,0,0,0.12); */
     transform: translateX(100%);          /* oculto a la derecha */
     transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 999;
@@ -605,6 +615,7 @@ html {
   .cont-botones-mobile a{width: inherit;}
 
   /* Engagement */
+  .section-engagement{background: ;}
   .engagement-inner { padding: 30px; gap: 0px; }
   .cont-casa1 { align-items: center; padding: 0; }
   .cont-book-info { flex-direction: column; padding: 30px; gap: 30px; border-radius: 15px; }
@@ -616,11 +627,11 @@ html {
   .contenedor-video {padding: 30px 20px;}
 
   /* Video */
-  .video-inner { flex-direction: column; padding: 30px; gap: 10px; min-height: auto; }
+  .video-inner { flex-direction: column; padding: 0 30px 30px 30px; gap: 10px; min-height: auto; }
   .kid-reading-img { display: none; }
   .contenedor-video { width: 100%; }
   .video-box { height: 185px; }
-  .frame-25 { flex-direction: start; gap: 15px; width: 100%; }
+  .frame-25 { flex-direction: start; gap: 15px; width: 100%; display: none;}
   .btn-outline, .frame-22, .frame-22 a{ display: block; width: 100%;}
   /* .frame-22{margin: auto;} */
   .packs-nube, .packs-nube2{display: none;}
@@ -632,6 +643,7 @@ html {
   .pack-card { width: 100%; }
 
   /* Nacho */
+  .section-nacho{background-size: cover;}
   .nacho-inner { flex-direction: column; padding: 30px 30px 60px 30px; gap: 18px; min-height: auto;}
   .nacho-book { width: 320px; height: 314px; }
   .nacho-text h2 { text-align: center; font-size: 28px; line-height: 35px; }
@@ -659,7 +671,7 @@ html {
   .arbol-footer, .arbol-footer-big { display: none; }
   .pagos { flex-wrap: wrap; gap: 8px; justify-content: center; }
   .pago-wa { flex: 1; min-width: 120px; }
-  .btn-enviar{width: 100%;}
+  .btn-enviar{width: 100%; height: 50px;}
 }
 </style>
 </head>
@@ -730,11 +742,23 @@ html {
 
   <!-- MÓVIL -->
   <div class="header-mobile">
-    <img class="headeer-mobile-nube" src="https://i.ibb.co/MyQZnVW7/Nuve-1.png" alt="">
-    <img class="headeer-mobile-nube2" src="https://i.ibb.co/MyQZnVW7/Nuve-1.png" alt="">
-    <div class="header-mobile-sky">
-      <img src="https://i.ibb.co/kVv1gPkn/Object.png" alt="Ciudad">
+    <!-- <img class="headeer-mobile-nube" src="https://i.ibb.co/MyQZnVW7/Nuve-1.png" alt="">
+    <img class="headeer-mobile-nube2" src="https://i.ibb.co/MyQZnVW7/Nuve-1.png" alt=""> -->
+
+    <!-- contenedor background movile fondo -->
+    <div class="contenedor-city-house-mobile">
+      <div class="ciudad-casas-mobile">
+        <div class="ciudad-bg-mobile">
+          <img src="https://i.ibb.co/kVv1gPkn/Object.png" alt="Ciudad" class="object-img">
+        </div>
+        <div class="casas-row-mobile">
+          <img src="https://i.ibb.co/Q3hx1v0C/casa-1.png" alt="Casa 1">
+          <img src="https://i.ibb.co/5fwxxr7/casa-2.png" alt="Casa 2">
+        </div>
+      </div>
+      <div class="HEADER-BG-MOBILE"></div>
     </div>
+
     <div class="header-mobile-content">
       <div class="casas-info-mobile">
         <p class="txt-purple">Te sientes frustrada por no ver progreso.</p>

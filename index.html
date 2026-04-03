@@ -127,7 +127,6 @@ html {
 }
 
 .btn-adquirir:hover{ transform: scale(1.05); transition: transform 0.3s ease;
-
 }
 
 .btn-whatsapp {
@@ -146,9 +145,10 @@ html {
 
 /* MOBILE HEADER */
 .header-mobile {
-  display: none; width: 100%; background: #695EB3;
+  position: relative; display: none; width: 100%; background: #695EB3;
   flex-direction: column; align-items: center; padding: 0 0 30px; gap: 0;
 }
+
 .header-mobile-sky {
   width: 100%; background: #f5f5f7;
   display: flex; justify-content: center; align-items: flex-end;
@@ -405,7 +405,7 @@ html {
 .oferta-item {
   display: flex; justify-content: center; align-items: center; padding: 15.5px;
   border-bottom: 0.78px dashed #E7576E;
-  font-family: 'Nunito'; font-weight: 400; font-size: 18.65px; line-height: 25px;
+  font-family: 'Nunito'; font-weight: 800; font-size: 18.65px; line-height: 25px;
   text-align: center; color: #E7576E;
 }
 .oferta-item:first-child { border-top: 0.78px dashed #E7576E; }
@@ -414,6 +414,10 @@ html {
   padding: 15.5px; width: 100%; background: #695EB3; border-radius: 11px; border: none;
   font-family: 'Nunito'; font-weight: 900; font-size: 21.76px; line-height: 30px;
   color: #FFFFFF; cursor: pointer;
+}
+
+.btn-solicitar:hover{
+  cursor: pointer; transform: scale(1.04); transition: transform 0.3s ease; background: #E7576E;
 }
 
 /* =============================================
@@ -451,6 +455,9 @@ html {
   font-family: 'Nunito'; font-weight: 900; font-size: 14px;
   color: #695EB3; cursor: pointer; width: 126px; height: 39px;
 }
+
+.btn-enviar:hover{background-color: #F2687E; color: whitesmoke; transform: scale(1.05); transition: transform 0.3s ease;
+}
 .forma-pago { display: flex; flex-direction: column; gap: 10px; width: 100%; }
 .forma-pago > p {
   font-family: 'Nunito'; font-weight: 900; font-size: 19px; line-height: 26px; color: #FFFFFF;
@@ -481,8 +488,9 @@ html {
 ============================================= */
 @media (max-width: 768px) {
   .nav-inner { padding: 15px 30px; }
-  .nav-links { display: none; height: 100%;}
+  /* .nav-links { display: none; height: 100%; gap: 40px;} */
   .hamburger { display: flex; }
+  .nav-links li{padding: 30px; width: 100%; text-align: center;}
 
   /* Header */
   .header-desktop { display: none; }
@@ -491,24 +499,132 @@ html {
   .casas-info-mobile p{
     color: white!important;
   }
+  .header-mobile-content{padding: 60px 30px 0 30px;}
+
+  /* Panel lateral: empieza fuera a la derecha */
+  .nav-links {
+    position: fixed;
+    top: 68px;           /* altura del nav */
+    right: 0;
+    bottom: 0;
+    width: 75%;
+    max-width: 300px;
+    background: #fff;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 10px 0;
+    box-shadow: -4px 0 30px rgba(0,0,0,0.12);
+    transform: translateX(100%);          /* oculto a la derecha */
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    overflow-y: auto;
+  }
+
+  /* Estado abierto */
+  .nav-links.nav-open {
+    transform: translateX(0);
+  }
+
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 16px 30px;
+    font-size: 16px;
+  }
+
+  /* ── ANIMACIÓN DEL HAMBURGER ── */
+  .hamburger {
+    display: flex !important;
+    position: relative;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Las 3 barras — estado cerrado */
+  .hamburger span {
+    position: absolute;
+    left: 4px;
+    width: 24px;
+    height: 3.2px;
+    background: #A2A2A2;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
+  }
+
+  .hamburger span:nth-child(1) { top: 7px; }
+  .hamburger span:nth-child(2) { top: 14.4px; }
+  .hamburger span:nth-child(3) { top: 21.8px; }
+
+  /* Estado abierto — forma la X */
+  .hamburger.is-open span:nth-child(1) {
+    top: 14.4px;
+    transform: rotate(45deg);
+    background: #E7576E;
+  }
+  .hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+  .hamburger.is-open span:nth-child(3) {
+    top: 14.4px;
+    transform: rotate(-45deg);
+    background: #E7576E;
+  }
+
+
+  .headeer-mobile-nube{width: 140px; position: absolute; left:0px; top:350px; animation: slide-in 6s ease-in-out infinite;}
+
+  @keyframes slide-in {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(20%); }
+  100% { transform: translateX(0); }
+}
+
+  .headeer-mobile-nube2{width: 170px; position: absolute; right:0px; top:300px; animation: slide-in2 8s ease-in-out infinite;
+    -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);}
+
+  @keyframes slide-in2 {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(-20%); }
+  100% { transform: translateX(0); }
+}
+
+
+  .cont-botones-mobile {width: 100%; max-width:fit-content}
+  .btn-adquirir-m, .btn-whatsapp-m, .cont-botones-mobile a{display: block; width: 100%;}
+  .cont-botones-mobile a{width: inherit;}
 
   /* Engagement */
-  .engagement-inner { padding: 30px; gap: 20px; }
+  .engagement-inner { padding: 30px; gap: 0px; }
   .cont-casa1 { align-items: center; padding: 0; }
   .cont-book-info { flex-direction: column; padding: 30px; gap: 30px; border-radius: 15px; }
   .libro1-img { display: none; }
   .cont-info1 h2 { font-size: 28px; line-height: 38px; }
   .info-grid { flex-direction: column; gap: 20px; }
   .engagement-img{display: none;}
-  .video-top-nube{top: -100px; right: 0; opacity: 0.5;}
+  .video-top-nube, .video-top-nube2{display: none; top: -100px; right: 0; opacity: 0.5;}
+  .contenedor-video {padding: 30px 20px;}
 
   /* Video */
   .video-inner { flex-direction: column; padding: 30px; gap: 10px; min-height: auto; }
   .kid-reading-img { display: none; }
   .contenedor-video { width: 100%; }
   .video-box { height: 185px; }
-  .frame-25 { flex-direction: column; gap: 15px; flex-direction:start!important; }
+  .frame-25 { flex-direction: start; gap: 15px; width: 100%; }
+  .btn-outline, .frame-22, .frame-22 a{ display: block; width: 100%;}
+  /* .frame-22{margin: auto;} */
   .packs-nube, .packs-nube2{display: none;}
+.video-top-nube {right: -70px;}
 
   /* Packs */
   .packs-inner { padding: 30px; gap: 19px; }
@@ -516,11 +632,14 @@ html {
   .pack-card { width: 100%; }
 
   /* Nacho */
-  .nacho-inner { flex-direction: column; padding: 30px; gap: 18px; min-height: auto;}
+  .nacho-inner { flex-direction: column; padding: 30px 30px 60px 30px; gap: 18px; min-height: auto;}
   .nacho-book { width: 320px; height: 314px; }
-  .nacho-text h2 { text-align: center; font-size: 28px; }
+  .nacho-text h2 { text-align: center; font-size: 28px; line-height: 35px; }
   .nacho-text p { text-align: center; }
   .arbusto-left, .arbusto-right { display: none; }
+  .packs-inner > h2 {line-height: 35px;}
+  .pack-title{font-size: 18px;}
+  .pack-desc{font-size: 14px;}
 
   /* Oferta */
   .oferta-inner { flex-direction: column; align-items: center; padding: 30px; min-height: auto; }
@@ -529,7 +648,8 @@ html {
   .oferta-card { width: 100%; max-width: 330px; padding: 24px 30px; gap: 17px; }
   .precio-actual { font-size: 34px; line-height: 47px; }
   .precio-tachado, .precio-label { font-size: 17px; line-height: 23px; }
-  .oferta-item { font-size: 14.6px; }
+  .oferta-item { font-size: 15px; font-weight: 800;}
+  .btn-solicitar{font-size: 19px;}
 
   /* Footer */
   .footer-inner { flex-direction: column; padding: 30px; min-height: auto; align-items: center; }
@@ -539,6 +659,7 @@ html {
   .arbol-footer, .arbol-footer-big { display: none; }
   .pagos { flex-wrap: wrap; gap: 8px; justify-content: center; }
   .pago-wa { flex: 1; min-width: 120px; }
+  .btn-enviar{width: 100%;}
 }
 </style>
 </head>
@@ -609,6 +730,8 @@ html {
 
   <!-- MÓVIL -->
   <div class="header-mobile">
+    <img class="headeer-mobile-nube" src="https://i.ibb.co/MyQZnVW7/Nuve-1.png" alt="">
+    <img class="headeer-mobile-nube2" src="https://i.ibb.co/MyQZnVW7/Nuve-1.png" alt="">
     <div class="header-mobile-sky">
       <img src="https://i.ibb.co/kVv1gPkn/Object.png" alt="Ciudad">
     </div>
@@ -789,7 +912,7 @@ html {
 <section id="section3" class="section-oferta">
   <div class="oferta-inner">
     <!-- Book-2 — OCULTO EN MÓVIL -->
-    <img class="libro-mockup" src="https://i.ibb.co/yFLZFDX0/Mockup-book-3.png" alt="Mockup libro">
+    <img class="libro-mockup" src="https://i.ibb.co/pj6PWb58/Mockup-book-3.png" alt="Mockup libro">
     <div class="cont-oferta-right">
       <div class="oferta-card">
         <div class="oferta-precio">
@@ -835,7 +958,7 @@ html {
           </a>
           <div class="pago-icon" style="color:#003087;"><img src="https://i.ibb.co/B5NP0hmQ/popular2.png" alt=""></div>
           <div class="pago-icon" style="color:#254C74;"><img src="https://i.ibb.co/NG4mwH2/banreservas2.png" alt=""></div>
-          <div class="pago-icon" style="color:#004990;"><img src="https://i.ibb.co/B5NP0hmQ/popular2.png" alt=""></div>
+          <div class="pago-icon" style="color:#004990;"><img src="https://i.ibb.co/mrpPQgMk/paypal1.png" alt=""></div>
         </div>
       </div>
     </div>
@@ -843,22 +966,41 @@ html {
 </section>
 
 <script>
+
+
 // const hamburger = document.getElementById('hamburger');
 // const navLinks = document.querySelector('.nav-links');
 // let menuOpen = false;
+
+// function isMobile() {
+//   return window.innerWidth <= 768;
+// }
+
 // hamburger.addEventListener('click', () => {
+//   if (!isMobile()) return;
 //   menuOpen = !menuOpen;
 //   navLinks.style.cssText = menuOpen
-//     ? 'display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:#fff;padding:20px 30px;gap:20px;box-shadow:0 8px 30px rgba(0,0,0,0.12);z-index:999;'
+//     ? 'display:flex;flex-direction:column;overflow:hidden;position:fixed;top:68px;left:0;right:0;background:#fff;padding:20px 30px;gap:0px;box-shadow:0 8px 30px rgba(0,0,0,0.12);z-index:999;'
 //     : 'display:none;';
 // });
-// navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-//   menuOpen = false; navLinks.style.cssText = 'display:none;';
-// }));
 
+// navLinks.querySelectorAll('a').forEach(a => {
+//   a.addEventListener('click', () => {
+//     if (!isMobile()) return;
+//     menuOpen = false;
+//     navLinks.style.cssText = 'display:none;';
+//   });
+// });
+
+// window.addEventListener('resize', () => {
+//   if (!isMobile()) {
+//     navLinks.style.cssText = '';
+//     menuOpen = false;
+//   }
+// });
 
 const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelector('.nav-links');
+const navLinks  = document.querySelector('.nav-links');
 let menuOpen = false;
 
 function isMobile() {
@@ -868,23 +1010,30 @@ function isMobile() {
 hamburger.addEventListener('click', () => {
   if (!isMobile()) return;
   menuOpen = !menuOpen;
-  navLinks.style.cssText = menuOpen
-    ? 'display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;background:#fff;padding:20px 30px;gap:20px;box-shadow:0 8px 30px rgba(0,0,0,0.12);z-index:999;'
-    : 'display:none;';
+  hamburger.classList.toggle('is-open', menuOpen);
+  navLinks.classList.toggle('nav-open', menuOpen);
+  // Bloquea el scroll del body mientras el menú está abierto
+  document.body.style.overflow = menuOpen ? 'hidden' : '';
 });
 
+// Cierra al hacer click en un enlace
 navLinks.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => {
     if (!isMobile()) return;
     menuOpen = false;
-    navLinks.style.cssText = 'display:none;';
+    hamburger.classList.remove('is-open');
+    navLinks.classList.remove('nav-open');
+    document.body.style.overflow = '';
   });
 });
 
+// Resetea al rotar pantalla / resize
 window.addEventListener('resize', () => {
   if (!isMobile()) {
-    navLinks.style.cssText = '';
     menuOpen = false;
+    hamburger.classList.remove('is-open');
+    navLinks.classList.remove('nav-open');
+    document.body.style.overflow = '';
   }
 });
 
